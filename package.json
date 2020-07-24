@@ -1,8 +1,7 @@
 {
   "name": "it-incubator-todolist-ts",
   "version": "0.1.0",
-  "private": false,
-  "homepage": "https://yarovenko-dmitry.github.iyarn add gh-pageso/TodoList_TS_class-home__work/",
+  "private": true,
   "dependencies": {
     "@material-ui/core": "^4.10.1",
     "@material-ui/icons": "^4.9.1",
@@ -15,7 +14,7 @@
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.9",
     "@types/uuid": "^7.0.3",
-    "gh-pages": "^3.1.0",
+    "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
@@ -27,8 +26,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "predeploy": "build",
-    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
@@ -56,7 +53,7 @@
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addon-storysource": "^5.3.19",
     "@storybook/addons": "^5.3.19",
-    "@storybook/preset-create-react-app": "^3.1.4",
+    "@storybook/preset-create-react-app": "^3.1.3",
     "@storybook/react": "^5.3.19",
     "jest-image-snapshot": "^4.0.2",
     "jest-puppeteer": "^4.4.0",

@@ -1,35 +1,32 @@
-import React from 'react';
-import {action} from '@storybook/addon-actions';
-import {Task} from './Task';
+import React from 'react'
+import {action} from '@storybook/addon-actions'
+import {Task} from './Task'
 
 export default {
-    title: 'Task Component',
-    component: Task,
-};
-
-// const callback = action('Button \'add\' was pressed inside the form')
-const changeTaskStatusCallback = action('Status changed');
-const changeTaskTitleCallback = action('Title changed');
-const removeTaskCallback = action('Removed Task');
-
-export const TaskBaseExample = () => {
- return (
-   <>
-     <Task
-       task={{id: '1', isDone: true, title: 'CSS'}}
-       changeTaskStatus={changeTaskStatusCallback}
-       changeTaskTitle={changeTaskTitleCallback}
-       removeTask={removeTaskCallback}
-       todolistId={'todolist1'}
-     />
-     <Task
-       task={{id: '2', isDone: false, title: 'JS'}}
-       changeTaskStatus={changeTaskStatusCallback}
-       changeTaskTitle={changeTaskTitleCallback}
-       removeTask={removeTaskCallback}
-       todolistId={'todolist2'}
-     />
-   </>
- );
+    title: 'Task Stories',
+    component: Task
 }
 
+const removeCallback = action('Remove Button inside Task clicked');
+const changeStatusCallback = action('Status changed inside Task');
+const changeTitleCallback = action('Title changed inside Task');
+
+export const TaskBaseExample = (props: any) => {
+    return (
+        <div>
+            <Task
+                task={{id: '1', isDone: true, title: "CSS"}}
+                removeTask={removeCallback}
+                changeTaskTitle={changeTitleCallback}
+                changeTaskStatus={changeStatusCallback}
+                todolistId={"todolistId1"}
+            />
+            <Task
+                task={{id: '2', isDone: false, title: "JS"}}
+                removeTask={removeCallback}
+                changeTaskTitle={changeTitleCallback}
+                changeTaskStatus={changeStatusCallback}
+                todolistId={"todolistId2"}
+            />
+        </div>)
+}
