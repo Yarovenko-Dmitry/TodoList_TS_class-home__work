@@ -5,10 +5,11 @@ import {AddItemForm} from './AddItemForm'
 export default {
     title: 'AddItemForm Stories',
     component: AddItemForm
+
 }
 
 export const AddItemFormBaseExample = (props: any) => {
-    return (<AddItemForm
+    return (<AddItemForm entityStatus={'loading'}
         addItem={action('Button inside form clicked')}
     />)
 }
