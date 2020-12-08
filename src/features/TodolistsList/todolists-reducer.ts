@@ -1,8 +1,8 @@
 import {todolistsAPI, TodolistType} from '../../api/todolists-api'
 import {Dispatch} from 'redux'
-import {RequestStatusType, SetAppErrorActionType, setAppStatusAC, SetAppStatusActionType} from '../../app/app-reducer'
+import {RequestStatusType, setAppStatusAC} from '../../app/app-reducer'
 import {handleServerNetworkError} from '../../utils/error-utils'
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 
 const initialState: Array<TodolistDomainType> = []
 
@@ -17,7 +17,7 @@ const slice = createSlice({
       }
     },
     addTodolistAC(state, action: PayloadAction<{ todolist: TodolistType }>) {
-      state.unshift({...action.payload.todolist, filter: 'all', entityStatus: 'idle'});
+      state.unshift({...action.payload.todolist, filter: 'all', entityStatus: 'idle'})
     },
     changeTodolistTitleAC(state, action: PayloadAction<{ id: string, title: string }>) {
       const index = state.findIndex(tl => tl.id === action.payload.id);
@@ -37,15 +37,11 @@ const slice = createSlice({
   }
 })
 
-export const todolistsReducer = slice.reducer;
+export const todolistsReducer = slice.reducer
 export const {
-  removeTodolistAC,
-  addTodolistAC,
-  changeTodolistTitleAC,
-  changeTodolistFilterAC,
-  changeTodolistEntityStatusAC,
-  setTodolistsAC
-} = slice.actions;
+  removeTodolistAC, addTodolistAC, changeTodolistTitleAC
+  , changeTodolistFilterAC, changeTodolistEntityStatusAC, setTodolistsAC
+} = slice.actions
 
 // thunks
 export const fetchTodolistsTC = () => {
@@ -57,7 +53,7 @@ export const fetchTodolistsTC = () => {
         dispatch(setAppStatusAC({status: 'succeeded'}))
       })
       .catch(error => {
-        handleServerNetworkError(error, dispatch);
+        handleServerNetworkError(error, dispatch)
       })
   }
 }
@@ -89,7 +85,7 @@ export const changeTodolistTitleTC = (id: string, title: string) => {
   return (dispatch: Dispatch) => {
     todolistsAPI.updateTodolist(id, title)
       .then((res) => {
-        dispatch(changeTodolistTitleAC({id: id, title: title}))
+        dispatch(changeTodolistTitleAC({id: id, title}))
       })
   }
 }
@@ -104,4 +100,3 @@ export type TodolistDomainType = TodolistType & {
   filter: FilterValuesType
   entityStatus: RequestStatusType
 }
-type ThunkDispatch = Dispatch< SetAppStatusActionType | SetAppErrorActionType>
